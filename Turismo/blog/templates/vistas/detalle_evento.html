@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% block contenido %}
+
+<h2>{{ evento.titulo }}</h2>
+<p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+
+{% if evento.imagen %}
+    <img src="{{ evento.imagen.url }}" width="400">
+{% endif %}
+
+<p>{{ evento.descripcion }}</p>
+
+{% endblock %}

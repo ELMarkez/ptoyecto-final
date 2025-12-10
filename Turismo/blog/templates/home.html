@@ -1,0 +1,18 @@
+{%load static%}
+{% extends "base.html" %}
+{% block contenido %}
+
+<!DOCTYPE html>
+<html>
+<h2>Próximos eventos turísticos</h2>
+
+{% for e in eventos %}
+    <div>
+        <h3>{{ e.titulo }}</h3>
+        <p>{{ e.fecha }}</p>
+        <a href="/evento/{{ e.id }}/">Ver más</a>
+    </div>
+    <hr>
+{% endfor %}
+
+{% endblock %}

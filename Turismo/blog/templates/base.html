@@ -1,0 +1,40 @@
+{%load static%}
+<DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Turísmo Chaco</title>
+     <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+
+<header>
+    <h1>BLOG TURÍSTICO</h1>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/eventos/">Eventos</a>
+
+        {% if user.is_authenticated %}
+            <a href="/crear_evento/">Crear Evento</a>
+            <a href="/logout/">Salir</a>
+        {% else %}
+            <a href="/login/">Ingresar</a>
+            <a href="/registro/">Registrarse</a>
+        {% endif %}
+    </nav>
+</header>
+
+<hr>
+
+<main>
+    {% block contenido %}
+    {% endblock %}
+</main>
+
+<footer>
+    <hr>
+    <p>© 2025 Blog Turístico</p>
+</footer>
+
+</body>
+</html>
