@@ -3,16 +3,15 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
-
 STATUS_CHOICES = [
         ('PENDIENTE', 'Pendiente'),
         ('REPROGRAMADO', 'Reprogramado'),
         ('CANCELADO', 'Cancelado'),
         ('FINALIZADO', 'Finalizado'),
     ]
-    
+
+
 class Evento(models.Model):
-   
     titulo = models.CharField(max_length=250)
     imagen = models.ImageField(
         upload_to='eventos',
@@ -26,10 +25,9 @@ class Evento(models.Model):
     fecha_inicio_evento = models.DateTimeField(blank=True, null=True)
     fecha_fin_evento = models.DateTimeField(blank=True, null=True)
     status = models.CharField(choices=STATUS_CHOICES, max_length=15, default='PENDIENTE')
-    
     def __str__(self):
         return self.titulo
-    
+
 
 class Autor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -47,6 +45,7 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nombre
+
 
 class Comentario(models.Model):
     autor_comentario = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -67,3 +66,23 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f"{self.autor_comentario} - {self.contenido_comentario[:100]}"
+
+
+class crear_evento(models.Model):
+    titulo = models.CharField(max_length=250)
+    imagen = models.ImageField(
+        upload_to='eventos',
+        verbose_name="Imagen",
+        null=True,
+        blank=True
+    )
+    contenido = models.TextField()
+    fecha_creacion = models.DateTimeField(default=timezone.now)
+    fecha_publicacion = models.DateTimeField(blank=True, null=True)
+    fecha_inicio_evento = models.DateTimeField(blank=True, null=True)
+    fecha_fin_evento = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(choices=STATUS_CHOICES, max_length=15, default='PENDIENTE')
+    ubicacion = models.CharField(max_length=255, null=True, blank=True)
+    
+    def __str__(self):
+        return self.titulo
