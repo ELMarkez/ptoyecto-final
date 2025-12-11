@@ -14,8 +14,7 @@ from pathlib import Path
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -26,7 +25,7 @@ SECRET_KEY = 'django-insecure-(zx!y+5a&eio*u$!kj)#+=+0ug*l(nepa0_&$!!ao(r&*n@&jn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Abelito84.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -81,18 +80,9 @@ WSGI_APPLICATION = 'Turismo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(os.path.dirname(BASE_DIR), 'db_sqlite3'),
     }
 }
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-STATICFILES_DIRS = [
-    BASE_DIR / "blog/static",
-]
-
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -128,10 +118,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+
 STATIC_URL = 'static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'blog/static')),
 
-STATICFILES_DIRS = [
-    BASE_DIR / "blog" / "static",
-]
+MEDIA= 'media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
