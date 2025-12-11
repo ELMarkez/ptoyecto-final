@@ -15,7 +15,7 @@ class Evento(models.Model):
    
     titulo = models.CharField(max_length=250)
     imagen = models.ImageField(
-        upload_to='eventos/',
+        upload_to='eventos',
         verbose_name="Imagen",
         null=True,
         blank=True
@@ -25,7 +25,7 @@ class Evento(models.Model):
     fecha_publicacion = models.DateTimeField(blank=True, null=True)
     fecha_inicio_evento = models.DateTimeField(blank=True, null=True)
     fecha_fin_evento = models.DateTimeField(blank=True, null=True)
-    status = models.CharField(choices=STATUS_CHOICES, max_length=15)
+    status = models.CharField(choices=STATUS_CHOICES, max_length=15, default='PENDIENTE')
     
     def __str__(self):
         return self.titulo
