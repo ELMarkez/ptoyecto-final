@@ -2,7 +2,7 @@
 {% block contenido %}
 <h2>Todos los eventos turísticos</h2>
 
-{% for e in eventos %}
+{% for e in evento %}
     <h3>{{ e.titulo }}</h3>
     <p>{{ e.fecha }}</p>
     <a href="/evento/{{ e.id }}/">Detalles</a>
