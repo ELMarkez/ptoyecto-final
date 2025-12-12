@@ -1,125 +1,179 @@
+/* =====================================
+   RESET GENERAL
+   ===================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  font-size: 100%;
-}
+
 body {
   font-family: "Arial", sans-serif;
+  background-color: #FAF6EF; /* crema natural */
+  color: #5B4636; /* marrón natural suave */
   line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
-}
-a {
-  color: #0077c0;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }
 
-/* Header / Navbar */
+/* =====================================
+   PALETA (Variables)
+   ===================================== */
+:root {
+  --verde-bosque: #3E6B48;
+  --verde-suave: #8EB69B;
+  --amarillo-arena: #E8C07D;
+  --tierra: #5B4636;
+  --crema: #FAF6EF;
+  --blanco: #ffffff;
+}
+
+/* =====================================
+   HEADER / NAVBAR
+   ===================================== */
 header {
-  background-color: #0077c0;
-  color: #fff;
-  padding: 20px 30px;
+  background: linear-gradient(90deg, var(--verde-bosque), var(--verde-suave));
+  padding: 20px 35px;
+  color: var(--blanco);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 4px solid var(--amarillo-arena);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
+
 header h1 {
   font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
+
 nav a {
+  color: var(--crema);
   margin-left: 20px;
-  font-size: 1rem;
-  color: #fff;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
+
 nav a:hover {
-  color: #ffd700;
+  color: var(--amarillo-arena);
 }
 
-/* Contenedor principal */
-main {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 15px;
-}
-
-/* Tarjetas / listados de eventos */
+/* =====================================
+   TARJETAS DE EVENTOS
+   ===================================== */
 .event-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  background-color: var(--blanco);
+  border-radius: 16px;
+  margin-bottom: 30px;
   overflow: hidden;
+  border: 2px solid #eee2d5;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  transition: 0.3s ease;
 }
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  border-color: var(--verde-suave);
+}
+
 .event-card img {
   width: 100%;
-  height: auto;
-  display: block;
-}
-.event-card .card-content {
-  padding: 15px;
-}
-.event-card .card-content h3 {
-  margin-bottom: 10px;
-  color: #0077c0;
-}
-.event-card .card-content p {
-  margin-bottom: 10px;
+  height: 240px;
+  object-fit: cover;
 }
 
-/* Botones */
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  font-size: 1.6rem;
+  color: var(--verde-bosque);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.card-content p {
+  color: var(--tierra);
+}
+
+/* =====================================
+   BOTONES
+   ===================================== */
+
 .btn {
   display: inline-block;
-  background-color: #25b1cc;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 1rem;
-}
-.btn:hover {
-  background-color: #1a92a3;
+  border: none;
+  transition: 0.2s;
 }
 
-/* Formulario (login / registro / crear evento) */
+.btn-verde {
+  background-color: var(--verde-bosque);
+  color: var(--blanco);
+}
+
+.btn-verde:hover {
+  background-color: #2f5738;
+}
+
+.btn-arena {
+  background-color: var(--amarillo-arena);
+  color: var(--tierra);
+}
+
+.btn-arena:hover {
+  background-color: #d3aa6f;
+}
+
+/* =====================================
+   FORMULARIOS
+   ===================================== */
 form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: var(--blanco);
+  padding: 30px;
+  border-radius: 16px;
   max-width: 500px;
-  margin: 20px auto;
+  margin: 40px auto;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-left: 6px solid var(--verde-bosque);
 }
-form input[type="text"],
-form input[type="password"],
-form input[type="email"],
-form input[type="date"],
-form textarea,
-form input[type="file"] {
+
+form input,
+form textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 2px solid #dcd2c6;
+  background-color: #fffaf4;
+  transition: 0.3s;
 }
+
+form input:focus,
+form textarea:focus {
+  border-color: var(--verde-suave);
+  outline: none;
+  background-color: #ffffff;
+}
+
 form button {
   width: 100%;
-  padding: 10px;
-  font-size: 1rem;
+  padding: 12px;
 }
 
-/* Pie de página */
+/* =====================================
+   FOOTER
+   ===================================== */
 footer {
-  background-color: #0077c0;
-  color: #fff;
+  background-color: var(--verde-bosque);
+  color: var(--crema);
   text-align: center;
-  padding: 15px 0;
-  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 4px solid var(--amarillo-arena);
+  margin-top: 60px;
 }
