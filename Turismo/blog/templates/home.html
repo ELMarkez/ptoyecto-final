@@ -10,7 +10,7 @@
     <div>
         <h3>{{ e.titulo }}</h3>
         <p>{{ e.fecha }}</p>
-        <a href="/evento/{{ e.id }}/">Ver más</a>
+        <a href="{% url 'detalle_evento' evento.id %}">Ver</a>
     </div>
     <hr>
 {% endfor %}

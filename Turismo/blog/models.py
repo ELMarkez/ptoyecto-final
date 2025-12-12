@@ -14,7 +14,7 @@ STATUS_CHOICES = [
 class Evento(models.Model):
     titulo = models.CharField(max_length=250)
     imagen = models.ImageField(
-        upload_to='eventos',
+        upload_to='Evento',
         verbose_name="Imagen",
         null=True,
         blank=True
@@ -25,16 +25,32 @@ class Evento(models.Model):
     fecha_inicio_evento = models.DateTimeField(blank=True, null=True)
     fecha_fin_evento = models.DateTimeField(blank=True, null=True)
     status = models.CharField(choices=STATUS_CHOICES, max_length=15, default='PENDIENTE')
+    autor_post = models.ForeignKey("Autor", on_delete=models.CASCADE, null=True, blank=True)
+    status = models.CharField(choices=STATUS_CHOICES, max_length=15, default='PENDIENTE')
+
     def __str__(self):
         return self.titulo
 
 
 class Autor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    nombre = models.CharField("nombre del usuario", max_length=200)
-    apellido = models.CharField("apellido de la apersona", max_length=200)
-    email = models.EmailField("correo electronico", unique=True)
+    nombre = models.CharField("nombre del usuario", max_length=200, blank=True)
+    apellido = models.CharField("apellido de la persona", max_length=200, blank=True)
+    email = models.EmailField("correo electronico", blank=True)
     biografia = models.TextField("reseña personal", blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        # Auto-rellenar datos desde User si están vacíos
+        if not self.nombre:
+            self.nombre = self.user.first_name or self.user.username
+
+        if not self.apellido:
+            self.apellido = self.user.last_name or ""
+
+        if not self.email:
+            self.email = self.user.email or f"{self.user.username}@mail.com"
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.nombre

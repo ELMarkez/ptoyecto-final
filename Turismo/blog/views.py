@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Evento, Autor, Comentario
 
 
+
 def inicio(request):
     return render(request, 'home.html')
 
@@ -32,14 +33,14 @@ def login_usuario(request):
 
 def logout_usuario(request):
     logout(request)
-    return redirect("inicio") 
+    return redirect("inicio")
 
 
 def registro(request):
     form = UserCreationForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         form.save()
-        return redirect("login")
+        return redirect("inicio")
     return render(request, "registro.html", {"form": form})
 
 
