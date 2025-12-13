@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Crear Evento</title>
@@ -11,16 +12,21 @@
             font-family: Arial, sans-serif;
             padding: 30px;
         }
+
         label {
             font-weight: bold;
             display: block;
             margin-top: 15px;
         }
-        input, textarea, select {
+
+        input,
+        textarea,
+        select {
             width: 300px;
             padding: 8px;
             margin-top: 5px;
         }
+
         button {
             margin-top: 20px;
             padding: 10px 25px;
@@ -29,40 +35,42 @@
         }
     </style>
 </head>
+
 <body>
 
-<h1>Crear Evento</h1>
+    <h1>Crear Evento</h1>
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
 
-    <!-- TÍTULO -->
-    <label for="titulo">Título del evento:</label>
-    <input type="text" id="titulo" name="titulo" required>
+        <!-- TÍTULO -->
+        <label for="titulo">Título del evento:</label>
+        <input type="text" id="titulo" name="titulo" required>
 
-    <!-- CONTENIDO / DESCRIPCIÓN -->
-    <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
+        <!-- CONTENIDO / DESCRIPCIÓN -->
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
 
-    <!-- FECHA -->
-    <label for="fecha">Fecha de inicio del evento:</label>
-    <input type="datetime-local" id="fecha" name="fecha" required>
+        <!-- FECHA -->
+        <label for="fecha">Fecha de inicio del evento:</label>
+        <input type="datetime-local" id="fecha" name="fecha" required>
 
-    <!-- IMAGEN -->
-    <label for="imagen">Imagen del evento:</label>
-    <input type="file" id="imagen" name="imagen" accept="image/*">
+        <!-- IMAGEN -->
+        <label for="imagen">Imagen del evento:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
 
-    <!-- ESTADO DEL EVENTO -->
-    <label for="status">Estado del evento:</label>
-    <select id="status" name="status" required>
-        <option value="PENDIENTE">Pendiente</option>
-        <option value="REPROGRAMADO">Reprogramado</option>
-        <option value="CANCELADO">Cancelado</option>
-        <option value="FINALIZADO">Finalizado</option>
-    </select>
+        <!-- ESTADO DEL EVENTO -->
+        <label for="status">Estado del evento:</label>
+        <select id="status" name="status" required>
+            <option value="PENDIENTE">Pendiente</option>
+            <option value="REPROGRAMADO">Reprogramado</option>
+            <option value="CANCELADO">Cancelado</option>
+            <option value="FINALIZADO">Finalizado</option>
+        </select>
 
-    <button type="submit">Crear Evento</button>
-</form>
+        <button type="submit">Crear Evento</button>
+    </form>
 
 </body>
+
 </html>
